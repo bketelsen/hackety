@@ -1,0 +1,2 @@
+deb [arch=amd64 signed-by=/usr/share/keyrings/vanilla-keyring.gpg] http://ppa.launchpad.net/vanilla-os/stable/ubuntu kinetic main
+# deb-src http://ppa.launchpad.net/vanilla-os/stable/ubuntu kinetic main
