@@ -1,0 +1,19 @@
+name: Build Image using Containerfile
+on: [push]
+
+jobs:
+  build:
+    name: Build image
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Buildah Action
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: vanilla-os
+        tags: 22.10r7 ${{ github.sha }}
+        oci: true
+        containerfiles: |
+          ./Containerfile
