@@ -14,7 +14,7 @@ jobs:
     steps:
       # Checkout push-to-registry action github repository
     - name: Checkout Push to Registry action
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
 
     - name: Buildah Action
       uses: redhat-actions/buildah-build@v2
