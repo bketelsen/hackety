@@ -20,9 +20,9 @@ jobs:
       uses: redhat-actions/buildah-build@v2
       with:
        image: ${{ env.IMAGE_NAME }}
-        tags: ${{ env.IMAGE_TAGS }}
-        oci: true
-        containerfiles: |
+       tags: ${{ env.IMAGE_TAGS }}
+       oci: true
+       containerfiles: |
          ./Containerfile
 
       # Push the image to GHCR (Image Registry)
