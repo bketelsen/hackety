@@ -48,7 +48,7 @@ jobs:
       # Push the image to docker
     - name: Push To docker
       uses: redhat-actions/push-to-registry@v2
-      id: push
+      id: pushdocker
       with:
         image: ${{ steps.build-action.outputs.image }}
         tags: ${{ steps.build-action.outputs.tags }}
@@ -60,3 +60,4 @@ jobs:
     - name: Echo outputs
       run: |
         echo "${{ toJSON(steps.push.outputs) }}"
+        echo "${{ toJSON(steps.pushocker.outputs) }}"
