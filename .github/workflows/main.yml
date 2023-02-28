@@ -7,8 +7,11 @@ env:
     IMAGE_NAME: vanilla-os 
     IMAGE_TAGS: ${{ github.ref_name}} latest
     IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+    DOCKER_REGISTRY: docker.io/${{ github.repository_owner }}
     REGISTRY_USER: ${{ github.actor }}
     REGISTRY_PASSWORD: ${{ github.token }}
+    DOCKER_USER: ${{ secrets.DOCKER_USER }}
+    DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 jobs:
   build:
     name: Build image
@@ -42,6 +45,18 @@ jobs:
         extra-args: |
           --disable-content-trust
 
+      # Push the image to docker
+    - name: Push To docker
+      uses: redhat-actions/push-to-registry@v2
+      id: push
+      with:
+        image: ${{ steps.build-action.outputs.image }}
+        tags: ${{ steps.build-action.outputs.tags }}
+        registry: ${{ env.DOCKER_REGISTRY }}
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        extra-args: |
+          --disable-content-trust
     - name: Echo outputs
       run: |
         echo "${{ toJSON(steps.push.outputs) }}"
