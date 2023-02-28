@@ -1,5 +1,5 @@
 name: Build Image using Containerfile
-on
+on:
   push:
     tags:
       - '*'    
