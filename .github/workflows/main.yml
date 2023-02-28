@@ -5,7 +5,7 @@ on:
       - '*'    
 env:
     IMAGE_NAME: vanilla-os 
-    IMAGE_TAGS: ${{ github.ref_name}}
+    IMAGE_TAGS: ${{ github.ref_name}} latest
     IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
     REGISTRY_USER: ${{ github.actor }}
     REGISTRY_PASSWORD: ${{ github.token }}
