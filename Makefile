@@ -47,6 +47,9 @@ CURRENT_TAG_MAJOR  := "v$(CURRENT_VERSION_MAJOR)"
 .PHONY: version
 version:
 	@$(MAKE) version-micro
+.PHONY: describe-VERSION_PARTS
+describe-parts:
+	@echo "$(NEXT_MICRO)"
 
 .PHONY: version-micro
 version-micro:
