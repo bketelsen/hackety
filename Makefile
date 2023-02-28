@@ -109,7 +109,10 @@ commit-message:
 
 
 image:
-	podman build  . -t ghcr.io/bketelsen/vanilla-os:$(CURRENT_TAG_MICRO)
+	podman build . -t ghcr.io/bketelsen/vanilla-os:$(CURRENT_TAG_MICRO)
+
+fresh:
+	podman build --no-cache . -t ghcr.io/bketelsen/vanilla-os:$(CURRENT_TAG_MICRO)
 
 rootfs: image
 	./podman-to-rootfs.sh ghcr.io/bketelsen/vanilla-os:$(CURRENT_TAG_MICRO) $(CURRENT_TAG_MICRO)

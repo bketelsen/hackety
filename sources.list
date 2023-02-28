@@ -1,4 +1,4 @@
-deb http://archive.ubuntu.com/ubuntu/ kinetic main restricted universe multiverse
-deb-src http://archive.ubuntu.com/ubuntu/ kinetic main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu/ kinetic-updates main restricted universe multiverse
-deb-src http://archive.ubuntu.com/ubuntu/ kinetic-updates main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ lunar main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ lunar main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ lunar-updates main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ lunar-updates main restricted universe multiverse
