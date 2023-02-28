@@ -26,7 +26,7 @@ mkdir -p "$OUTPUT/image"
 mkdir -p "$OUTPUT/rootfs"
 
 echo "#### Pulling $IMAGE..."
-podman pull "$IMAGE"
+#podman pull "$IMAGE"
 
 echo "#### Saving $IMAGE to $OUTPUT/image/ ..."
 podman save "$IMAGE" > "$OUTPUT/image/image.tar"

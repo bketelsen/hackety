@@ -38,18 +38,38 @@ BRANCH_NAME        := $(shell git rev-parse --abbrev-ref HEAD)
 TAG_MESSAGE         = "$(TIME) $(DATE) $(AUTHOR) $(BRANCH_NAME)"
 COMMIT_MESSAGE     := $(shell git log --format=%B -n 1 $(COMMIT))
 
-CURRENT_TAG_MICRO  := "v$(CURRENT_VERSION_MICRO)"
-CURRENT_TAG_MINOR  := "v$(CURRENT_VERSION_MINOR)"
-CURRENT_TAG_MAJOR  := "v$(CURRENT_VERSION_MAJOR)"
+CURRENT_TAG_MICRO  := v$(CURRENT_VERSION_MICRO)
+CURRENT_TAG_MINOR  := v$(CURRENT_VERSION_MINOR)
+CURRENT_TAG_MAJOR  := v$(CURRENT_VERSION_MAJOR)
 
 # --- Version commands ---
 
 .PHONY: version
 version:
 	@$(MAKE) version-micro
-.PHONY: describe-VERSION_PARTS
+
+
+.PHONY: describe-parts
 describe-parts:
+	@echo "$(DESCRIBE_PARTS)"
+
+.PHONY: major
+major:
+	@echo "$(CURRENT_VERSION_MAJOR)"
+
+.PHONY: minor
+minor:
+	@echo "$(CURRENT_VERSION_MINOR)"
+
+.PHONY: micro
+micro:
+	@echo "$(CURRENT_VERSION_MICRO)"
+
+.PHONY: next-micro
+next-micro:
 	@echo "$(NEXT_MICRO)"
+
+
 
 .PHONY: version-micro
 version-micro:
@@ -89,7 +109,7 @@ commit-message:
 
 
 image:
-	podman build --no-cache . -t ghcr.io/bketelsen/vanilla-os:$(VERSION)
+	podman build  . -t ghcr.io/bketelsen/vanilla-os:$(CURRENT_TAG_MICRO)
 
-rootfs:
-	./podman-to-rootfs.sh ghcr.io/bketelsen/vanilla-os:$(VERSION) $(VERSION)
+rootfs: image
+	./podman-to-rootfs.sh ghcr.io/bketelsen/vanilla-os:$(CURRENT_TAG_MICRO) $(CURRENT_TAG_MICRO)
