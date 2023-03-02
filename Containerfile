@@ -8,6 +8,9 @@ RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
        software-properties-common \
        rsyslog systemd systemd-cron sudo gpg 
+RUN apt-get -y install --no-install-recommends \
+  linux-image-generic \
+  systemd-sysv
 COPY os/etc/config/archives/vanilla.key /tmp/
 RUN cat /tmp/vanilla.key | gpg --dearmor -o /usr/share/keyrings/vanilla-keyring.gpg
 

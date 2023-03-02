@@ -116,3 +116,6 @@ fresh:
 
 rootfs: image
 	./podman-to-rootfs.sh ghcr.io/bketelsen/vanilla-os:$(CURRENT_TAG_MICRO) $(CURRENT_TAG_MICRO)
+
+tar:
+	cd $(CURRENT_TAG_MICRO) && sudo tar -cvzf vanilla-$(CURRENT_TAG_MICRO).tar -C rootfs .
