@@ -35,7 +35,8 @@ RUN apt-get update \
     orca \
     totem \
     grub2-common \
-    grub-efi-amd64
+    grub-efi-amd64 \
+    shim-signed
 
 
 RUN sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf
