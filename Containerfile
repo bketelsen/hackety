@@ -33,8 +33,7 @@ RUN apt-get update \
     file-roller \
     eog \
     orca \
-    totem \
-    systemd-boot 
+    totem 
 
 
 RUN sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf
